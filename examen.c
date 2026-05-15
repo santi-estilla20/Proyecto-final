@@ -91,29 +91,66 @@ int main()
         puntosCanciones[cancion3] = puntosCanciones [cancion3] + 1;
         
     }
-    int lugar1 = -1;
-    int lugar2 = -1; 
-    int numcancion1 = 0;
-    int numcancion2 = 0;
+    int puntos1 = -1;
+    int puntos2 = -1; 
+    int cancionVotada1 = 0;
+    int cancionVotada2 = 0;
     
     for ( int i = 0; i < 10; i++)
     {
-        if (puntosCanciones [i] > lugar1)
+        if (puntosCanciones [i] > puntos1)
         {
-            lugar2 = lugar1;
-            numcancion2 = numcancion1;
+            puntos2 = puntos1;
+            cancionVotada2 = cancionVotada1;
             
-            lugar1 = puntosCanciones [i];
-            numcancion1 = i;
+            puntos1 = puntosCanciones [i];
+            cancionVotada1 = i;
             
         }
-        else if (puntosCanciones [i] > lugar2)
+        else if (puntosCanciones [i] > puntos2)
         {
-            lugar2 = puntosCanciones [i];
-            numcancion2 = i;
+            puntos2 = puntosCanciones [i];
+            cancionVotada2 = i;
         }
     }
-    printf ("La primera canción más votada es la cancion: %d\n", numcancion1 );
-    printf ("La segunda canción más votada es la cancion: %d\n", numcancion2 );
+    printf ("La primera canción más votada es la cancion: %d\n", cancionVotada1 );
+    printf ("La segunda canción más votada es la cancion: %d\n", cancionVotada2 );
+    
+    int puntosmaximo = -1;
+    int puntosoyente = -1;
+    int ganador = 0;
+    
+    for (int i= 0; i < totaldeparticipantes; i++)
+    {
+        int puntosOyente = 0;
+        int v1 = votosdeparticipantes [i][0];
+        int v2 = votosdeparticipantes [i][1];
+        int v3 = votosdeparticipantes [i][2];
+        
+        if ((v1 == cancionVotada1 || v2 == cancionVotada1 || v3 == cancionVotada1) &&
+            (v1 == cancionVotada2 || v2 == cancionVotada2 || v3 == cancionVotada2))
+        {
+            puntosOyente = 60;
+        }
+            
+        else if (v1 == cancionVotada1 || v2 == cancionVotada1 || v3 == cancionVotada1)
+        {
+            puntosOyente = 30;
+        }
+        
+        else if (v1 == cancionVotada2 || v2 == cancionVotada2 || v3 == cancionVotada2)
+        {
+            puntosOyente = 20;
+        }
+        
+     printf ("Oyente %d: %d puntos\n", i, puntosOyente);
+        if (puntosOyente > puntosmaximo)
+        {
+            puntosmaximo = puntosOyente;
+            ganador = i;
+        }
+        
+    }
+    printf ("El ganador es el oyento numero: %d", ganador);
     return 0;
 }
