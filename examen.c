@@ -1,3 +1,4 @@
+//MENDOZA ESTILLA OSCAR SANTIAGO
 #include <stdio.h>
 
 int registrarVotos (int votos [][3], char *tituloscanciones[]);
