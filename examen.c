@@ -113,8 +113,8 @@ int main()
             cancionVotada2 = i;
         }
     }
-    printf ("La primera canción más votada es la cancion: %d\n", cancionVotada1 + 1, tituloscanciones[cancionVotada1]);
-    printf ("La segunda canción más votada es la cancion: %d\n", cancionVotada2 + 1, tituloscanciones[cancionVotada2]);
+    printf ("La primera canción más votada es la cancion: %d (%s) \n", cancionVotada1 + 1, tituloscanciones[cancionVotada1]);
+    printf ("La segunda canción más votada es la cancion: %d (%s) \n", cancionVotada2 + 1, tituloscanciones[cancionVotada2]);
     
     int puntosmaximo = -1;
     int puntosoyente = -1;
