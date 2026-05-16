@@ -2,7 +2,7 @@
 
 int main() 
 {
-    char *tituloscanciones[10] = {"Hielo","La Célula Que Explota","Trátame Suavemente","En La Ciudad De La Furia","Azul","Viento","Lamento Boliviano","La Mentira","Persiana Americana","EoO"};
+    char *tituloscanciones[10] = {"Algo Esta Cambiando","Hasta La Raiz","Teenage Dream","Bacalar","Nunca Es Suficiente","Blank Space","Deja Vu","Dulce Fantasia","Nettles","Monitor"};
     int votosdeparticipantes[100][3] , v1 , v2 , v3 , i ;
     int totaldeparticipantes = 0;
     
@@ -15,7 +15,7 @@ int main()
 
     while(totaldeparticipantes < 100) 
     {
-        printf("Dame la posición de tus 3 canciones, o un -1 si ya no hay más participantes:\n");
+        printf("Dame la posición de tus 3 canciones, o un -1 si ya no hay más participantes:\n", totaldeparticipantes + 1);
         
         do
         {
@@ -56,9 +56,9 @@ int main()
         }
         while( v3<1 || v3>10 );
 
-        votosdeparticipantes[totaldeparticipantes][0] = v1;
-        votosdeparticipantes[totaldeparticipantes][1] = v2;
-        votosdeparticipantes[totaldeparticipantes][2] = v3;
+        votosdeparticipantes[totaldeparticipantes][0] = v1 - 1;
+        votosdeparticipantes[totaldeparticipantes][1] = v2 - 1;
+        votosdeparticipantes[totaldeparticipantes][2] = v3 - 1;
 
         totaldeparticipantes++;
     }
@@ -67,7 +67,7 @@ int main()
         
     for( i=0 ; i<totaldeparticipantes ; i++ )
     {
-        int au=votosdeparticipantes[i][0] - 1,ad=votosdeparticipantes[i][1] - 1,at=votosdeparticipantes[i][2] - 1 ;
+        int au=votosdeparticipantes[i][0],ad=votosdeparticipantes[i][1],at=votosdeparticipantes[i][2];
         numvot[au]++;
         numvot[ad]++;
         numvot[at]++;
@@ -113,8 +113,8 @@ int main()
             cancionVotada2 = i;
         }
     }
-    printf ("La primera canción más votada es la cancion: %d\n", cancionVotada1 + 1);
-    printf ("La segunda canción más votada es la cancion: %d\n", cancionVotada2 + 1);
+    printf ("La primera canción más votada es la cancion: %d\n", cancionVotada1 + 1, tituloscanciones[cancionVotada1]);
+    printf ("La segunda canción más votada es la cancion: %d\n", cancionVotada2 + 1, tituloscanciones[cancionVotada2]);
     
     int puntosmaximo = -1;
     int puntosoyente = -1;
@@ -143,7 +143,7 @@ int main()
             puntosOyente = 20;
         }
         
-     printf ("Oyente %d: %d puntos\n", i, puntosOyente);
+     printf ("Oyente %d: %d puntos\n", i + 1, puntosOyente);
         if (puntosOyente > puntosmaximo)
         {
             puntosmaximo = puntosOyente;
@@ -151,6 +151,6 @@ int main()
         }
         
     }
-    printf ("El ganador es el oyento numero: %d", ganador);
+    printf ("El ganador es el oyento numero: %d", ganador + 1);
     return 0;
 }
